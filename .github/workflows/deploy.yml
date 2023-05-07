@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - 'zip'
-      
+
 jobs:
   build:
 
@@ -17,14 +17,13 @@ jobs:
         run: |
           unzip site.zip
           rm site.zip
-        
+
       - name: Publish to "publish" branch
         run: |
           git checkout -b tmp
           git add .
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions"
-          GITHUB_ACTIONS_BOT_NAME = "github-actions"
           git commit -m "New version from zip"
           git checkout publish
           git reset --hard tmp
