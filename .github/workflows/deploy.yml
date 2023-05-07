@@ -20,7 +20,7 @@ jobs:
 
       - name: Publish to "publish" branch
         run: |
-          set +x
+          set -eux
           git checkout -b tmp
           git add .
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
