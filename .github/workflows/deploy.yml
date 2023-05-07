@@ -26,6 +26,6 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions"
           git commit -m "New version from zip"
-          git checkout publish --
+          git checkout -b publish origin/publish
           git reset --hard tmp
           git push --force origin publish
