@@ -1,0 +1,166 @@
+backend:
+  name: github
+  repo: "Wakan-Dojo/website"
+  branch: main
+
+# Uncomment to work locally
+# local_backend: true
+# backend:
+#   name: proxy
+#   proxy_url: http://localhost:8081/api/v1
+#   branch: gatsby
+
+media_folder: static
+public_folder: ""
+
+locale: "en"
+
+collections:
+  - name: "metadata"
+    label: "Metadonnées"
+    files:
+      - name: "metadata"
+        label: "Metadonnées"
+        file: "content/metadata.yml"
+        fields:
+          - label: "Titre du site, et balise <h1>"
+            name: "title"
+            widget: "string"
+            hint: "Titre du site, balise H1, utilisé pour le référencement SEO"
+          - label: "Sous-titre du site"
+            name: "subtitle"
+            widget: "string"
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            hint: "Description du site, balise <meta description> utilisée pour le référencement SEO"
+          - label: "Titre (balise title)"
+            name: "titleTag"
+            widget: "string"
+            hint: "Balise <title>, nom de l'onglet dans le navigateur, utilisé pour le référencement SEO."
+          - label: "Logo"
+            name: "logoImage"
+            widget: "image"
+            hint: "Affiché dans le header, à côté du titre du site"
+          - label: "Bannière"
+            name: "bannerImage"
+            widget: "image"
+            hint: "Affichée dans le header derrière le titre"
+
+          - label: "Social card"
+            name: "socialCard"
+            widget: "image"
+            hint: "Cette image sera affichée quand le site est partagé sur les réseaux sociaux"
+
+          - label: "URL"
+            name: "url"
+            hint: "URL de déploiement du site"
+            widget: "string"
+            pattern: ["https://.*", "Ce champ doit être une URL"]
+
+          - label: "Social Icons"
+            name: "socialIcons"
+            widget: "list"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Icon"
+                name: "icon"
+                widget: "string"
+                hint: "Nom de l'icône, tiré de https://simpleicons.org/"
+
+              - label: "Href"
+                name: "href"
+                widget: "string"
+                pattern: ["https://.*", "Ce champ doit être une URL"]
+
+      - name: "map"
+        label: "Plan"
+        file: "content/map.md"
+        fields:
+          - label: "Contenu de la popup"
+            name: "body"
+            widget: "markdown"
+
+          - label: "Coordonnées"
+            name: "geojson"
+            widget: "map"
+
+          - label: "Niveau de zoom de la carte"
+            name: "initZoom"
+            widget: "number"
+
+  - name: "sections"
+    label: "Sections"
+    label_singular: "Section"
+    folder: "content/sections"
+    create: true
+    slug: "{{title}}"
+    extension: "md"
+    format: "yaml-frontmatter"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Order"
+        name: "order"
+        widget: "number"
+      - label: "Image à gauche du texte"
+        name: "leftImage"
+        widget: "image"
+        required: false
+        hint: "optionnel"
+      - label: "Image sous la section"
+        name: "bottomImage"
+        widget: "image"
+        required: false
+        hint: "optionnel, recommandé pour toutes les sections sauf la dernière"
+      - label: "Titre dans le menu de navigation"
+        name: "menuTitle"
+        widget: "string"
+        required: false
+        hint: "optionnel, si différent du titre"
+      - label: "Contenu"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - label: "Contient le plan"
+        name: "hasMap"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Si coché, la carte sera affichée sous la section"
+      - label: "Contient le blog"
+        name: "isBlog"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Si coché, la section contiendra les articles de blog"
+      - label: "Contient la gallerie"
+        name: "isGallery"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Si coché, la section contiendra une gallerie d'images"
+
+  - name: "blog"
+    label: "Articles de blog"
+    label_singular: "Article"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    extension: "md"
+    format: "yaml-frontmatter"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "image"
+        name: "image"
+        widget: "image"
+
+      - label: "Contenu"
+        name: "body"
+        widget: "markdown"

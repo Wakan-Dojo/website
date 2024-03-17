@@ -1,0 +1,32 @@
+titleTag: Wakan Dōjō - Association parisienne de Ninjutsu
+logoImage: logo.jpg
+url: https://wakan-dojo.fr
+socialIcons:
+  - title: Facebook
+    icon: Facebook
+    href: https://www.facebook.com/profile.php?id=100092522586970
+  - title: Discord
+    icon: Discord
+    href: https://discord.gg/a8vcHhxdPB
+  - title: Instagram
+    icon: Instagram
+    href: https://www.instagram.com/wakan_dojo/
+gallery:
+  - title: ""
+    image: photo-1.jpg
+  - title: ""
+    image: photo-2.jpg
+  - title: ""
+    image: photo-3.jpg
+  - title: ""
+    image: photo-4.jpg
+  - title: ""
+    image: photo-5.jpg
+  - title: ""
+    image: photo-6.jpg
+title: Wakan Dōjō
+subtitle: Association parisienne de Ninjutsu
+description: Wakan Dōjō est une association parisienne de Ninjutsu, art martial
+  japonais traditionnel. Venez découvrir notre dojo et nos cours !
+socialCard: armure.jpg
+bannerImage: armure.jpg

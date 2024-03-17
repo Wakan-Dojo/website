@@ -9,29 +9,35 @@
   ],
   "scripts": {
     "develop": "gatsby develop",
-    "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "decap-server": "decap-server"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.18",
-    "gatsby": "^5.13.3",
-    "gatsby-plugin-netlify-cms": "^7.12.1",
-    "gatsby-plugin-postcss": "^6.13.1",
-    "gatsby-source-filesystem": "^5.13.1",
-    "gatsby-transformer-remark": "^6.13.1",
-    "netlify-cms-app": "^2.15.72",
-    "postcss": "^8.4.35",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.4.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
-    "typescript": "^5.3.3"
+    "@fontsource/libre-franklin": "*",
+    "@heroicons/react": "*",
+    "@icons-pack/react-simple-icons": "*",
+    "@tailwindcss/typography": "*",
+    "autoprefixer": "*",
+    "classnames": "*",
+    "decap-cms-app": "*",
+    "decap-server": "*",
+    "gatsby": "*",
+    "gatsby-plugin-decap-cms": "*",
+    "gatsby-plugin-image": "*",
+    "gatsby-plugin-postcss": "*",
+    "gatsby-plugin-react-leaflet": "*",
+    "gatsby-plugin-sharp": "*",
+    "gatsby-source-filesystem": "*",
+    "gatsby-transformer-remark": "*",
+    "gatsby-transformer-sharp": "*",
+    "gatsby-transformer-yaml": "*",
+    "leaflet": "^1.9.4",
+    "postcss": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-leaflet": "^4.2.1",
+    "tailwindcss": "*"
   }
 }
