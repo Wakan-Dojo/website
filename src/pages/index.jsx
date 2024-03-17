@@ -6,11 +6,12 @@ import Section from "../components/section";
 
 export const query = graphql`
   query {
-    allFile(
+    sections: allFile(
       filter: {
         sourceInstanceName: { eq: "content" }
         dir: { glob: "**/sections" }
       }
+      sort: { childMarkdownRemark: { frontmatter: { order: ASC } } }
     ) {
       nodes {
         name
@@ -18,22 +19,55 @@ export const query = graphql`
           html
           frontmatter {
             title
-            menu_title
             order
+            menu_title
+            left_image
             bottom_image
+            blog
+            gallery {
+              title
+              url
+            }
+            map {
+              geojson
+              initZoom
+              popupContent
+              token
+            }
           }
         }
+      }
+    }
+    articles: allFile(
+      filter: {
+        sourceInstanceName: { eq: "content" }
+        dir: { glob: "**/blog" }
+      }
+      sort: { name: DESC }
+    ) {
+      nodes {
+        name
+        childMarkdownRemark {
+          html
+          frontmatter {
+            title
+            image
+          }
+        }
+      }
+    }
+    footer: file(name: { eq: "footer" }) {
+      name
+      childMarkdownRemark {
+        html
       }
     }
   }
 `;
 
 const IndexPage = ({ data }) => {
-  const sections = data.allFile.nodes.sort(
-    (node1, node2) =>
-      node1.childMarkdownRemark.frontmatter.order -
-      node2.childMarkdownRemark.frontmatter.order
-  );
+  console.log(data.sections);
+  const sections = data.sections.nodes;
   const staticMenuItems = [
     {
       title: "Facebook",
@@ -61,6 +95,11 @@ const IndexPage = ({ data }) => {
     }))
     .concat(staticMenuItems);
 
+  let articles = data.articles.nodes.map((node) => ({
+    title: node.childMarkdownRemark.frontmatter.title,
+    content: node.childMarkdownRemark.html,
+    image: node.childMarkdownRemark.frontmatter.image,
+  }));
   return (
     <>
       <Header
@@ -72,18 +111,27 @@ const IndexPage = ({ data }) => {
       <main>
         {sections.map((node) => (
           <Section
+            key={node.name}
             anchor={node.name}
             title={node.childMarkdownRemark.frontmatter.title}
             content={node.childMarkdownRemark.html}
-            bottom_image={node.childMarkdownRemark.frontmatter.bottom_image}
+            leftImage={node.childMarkdownRemark.frontmatter.left_image}
+            bottomImage={node.childMarkdownRemark.frontmatter.bottom_image}
+            gallery={node.childMarkdownRemark.frontmatter.gallery}
+            articles={node.childMarkdownRemark.frontmatter.blog && articles}
+            map={node.childMarkdownRemark.frontmatter.map}
           ></Section>
         ))}
       </main>
-      <Footer></Footer>
+      <Footer content={data.footer.childMarkdownRemark.html}></Footer>
     </>
   );
 };
 
 export default IndexPage;
 
-export const Head = () => <title>Home Page</title>;
+export const Head = () => (
+  <>
+    <html class="scroll-smooth scroll-pt-4" />
+  </>
+);

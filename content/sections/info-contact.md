@@ -4,13 +4,13 @@ order: 20
 menu_title: Infos & Contact
 map:
   geojson: >
-    {\"type\": \"Point\", \"coordinates\": [2.3549599, 48.8709636]}",
+    {"type": "Point", "coordinates": [2.3549599, 48.8709636]}
   initZoom: 15
   popupContent:
     - Tenchi Dojo
     - 25 Bd de Strasbourg,
     - 75010 Paris
-  token: pk.eyJ1IjoiZXdqb2FjaGltIiwiYSI6ImNsMW8wbG8xdzAxMnAzZG5xbjZzZnNxMmUifQ.2om45d2fPNIwlDI3Hy7ZvQ"
+  token: pk.eyJ1IjoiZXdqb2FjaGltIiwiYSI6ImNsMW8wbG8xdzAxMnAzZG5xbjZzZnNxMmUifQ.2om45d2fPNIwlDI3Hy7ZvQ
 bottom_image: paul-et-hatsumi-sensei.jpg
 ---
 

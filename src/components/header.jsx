@@ -60,7 +60,7 @@ const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
             <div className="flex flex-wrap items-center justify-evenly flex-col sm:flex-row">
               {menuItems.map((menuItem) => (
                 <a
-                  key={menuItem.anchor}
+                  key={menuItem.anchor || menuItem.icon}
                   className="p-2 sm:p-5 text-sm font-semibold transition-colors duration-300 hover:text-slate-500"
                   href={menuItem.href || "#" + menuItem.anchor}
                 >
