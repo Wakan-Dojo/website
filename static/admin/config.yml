@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: "Wakan-Dojo/website"
+  branch: main
+
+media_folder: "static"
+
+collections:
+  - name: "metadata"
+    label: "Metadata"
+    files:
+      - name: "metadata"
+        label: "Metadata"
+        file: "content/metadata.yml"
+        fields:
+          - label: "Titre du site"
+            name: "title"
+            widget: "string"
+          - label: "Sous-titre du site"
+            name: "subtitle"
+            widget: "string"
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            hint: "Description du site, utilisée pour le référencement SEO"
+          - label: "Mots-clés SEO"
+            name: "keywords"
+            widget: "string"
+            hint: "Mots-clés utilisés pour le référencement SEO, séparés par des virgules"
+          - label: "Social card"
+            name: "social_card"
+            widget: "image"
+            hint: "Cette image sera affichée quand le site est partagé sur les réseaux sociaux"
+
+          - label: "URL"
+            name: "url"
+            hint:
+            widget: "string"
+            pattern: ["https://.*", "Ce champ doit être une URL"]
+
+          - {
+              label: "Social Icons",
+              name: "social_icons",
+              widget: "list",
+              fields:
+                [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Icon", name: "icon", widget: "string" },
+                  {
+                    label: "Href",
+                    name: "href",
+                    widget: "string",
+                    pattern: ["https://.*", "Ce champ doit être une URL"],
+                  },
+                ],
+            }

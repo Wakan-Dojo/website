@@ -20,12 +20,12 @@ const Article = ({ article }) => {
   );
 };
 
-const Blog = ({ articles }) => {
+export const Blog = ({ articles }) => {
   return articles.map((article) => (
     <Article key={article.title} article={article}></Article>
   ));
 };
-const Map = ({ geojson, initZoom, popupContent, token }) => {
+export const Map = ({ geojson, initZoom, popupContent, token }) => {
   const geojsonObject = JSON.parse(geojson);
   const coordinates = [
     geojsonObject.coordinates[1],
@@ -52,7 +52,17 @@ const Map = ({ geojson, initZoom, popupContent, token }) => {
   );
 };
 
-const SectionContent = ({ title, content }) => {
+const SectionContent = ({ title, content, leftImage }) => {
+  if (leftImage) {
+    return (
+      <div className="flex items-center flex-col md:flex-row">
+        <img src={leftImage} alt="" className="h-full w-1/2 m-4 aspect-auto" />
+        <div className="m-4">
+          <SectionContent title={title} content={content}></SectionContent>
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <h3 className="text-2xl font-extrabold uppercase tracking-wider mb-4">
@@ -63,7 +73,7 @@ const SectionContent = ({ title, content }) => {
   );
 };
 
-const Gallery = ({ gallery }) => {
+export const Gallery = ({ gallery }) => {
   return (
     <div className="flex items-center flex-wrap justify-evenly">
       {gallery.map((item) => (
@@ -78,39 +88,23 @@ const Gallery = ({ gallery }) => {
   );
 };
 
-const Section = ({
+export const Section = ({
   anchor,
   title,
   content,
   leftImage,
   bottomImage,
-  gallery,
-  articles,
-  map,
+  children,
 }) => {
-  let contentElement = (
-    <SectionContent title={title} content={content}></SectionContent>
-  );
-  let additionalClasses = [];
-  if (leftImage) {
-    additionalClasses = " flex items-center flex-col md:flex-row";
-    contentElement = (
-      <>
-        <img src={leftImage} alt="" className="h-full w-1/2 m-4 aspect-auto" />
-        <div className="m-4">{contentElement}</div>
-      </>
-    );
-  }
   return (
     <>
-      <section
-        className={"container mx-auto max-w-5xl p-12" + additionalClasses}
-        id={anchor}
-      >
-        {contentElement}
-        {gallery && <Gallery gallery={gallery}></Gallery>}
-        {articles && <Blog articles={articles}></Blog>}
-        {map && <Map {...map}></Map>}
+      <section className="container mx-auto max-w-5xl p-12" id={anchor}>
+        <SectionContent
+          title={title}
+          content={content}
+          leftImage={leftImage}
+        ></SectionContent>
+        {children}
       </section>
       {bottomImage && (
         <section
@@ -121,5 +115,3 @@ const Section = ({
     </>
   );
 };
-
-export default Section;

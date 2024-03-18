@@ -1,7 +1,6 @@
 const config = {
   siteMetadata: {},
   plugins: [
-    "gatsby-plugin-decap-cms",
     "gatsby-plugin-postcss",
     "gatsby-transformer-remark",
     "gatsby-plugin-react-leaflet",
@@ -22,6 +21,7 @@ const config = {
       },
       __key: "content",
     },
+    "gatsby-plugin-decap-cms",
   ],
 };
 

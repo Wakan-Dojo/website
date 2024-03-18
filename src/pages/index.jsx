@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import * as React from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Section from "../components/section";
+import { Blog, Gallery, Map, Section } from "../components/section";
 
 export const query = graphql`
   query {
@@ -62,29 +62,28 @@ export const query = graphql`
         html
       }
     }
+    metadata: file(name: { eq: "metadata" }) {
+      name
+      childContentYaml {
+        title
+        subtitle
+        description
+        keywords
+        social_card
+        social_icons {
+          title
+          icon
+          href
+        }
+      }
+    }
   }
 `;
 
 const IndexPage = ({ data }) => {
-  console.log(data.sections);
   const sections = data.sections.nodes;
-  const staticMenuItems = [
-    {
-      title: "Facebook",
-      icon: "icons/facebook.svg",
-      href: "https://www.facebook.com/profile.php?id=100092522586970",
-    },
-    {
-      title: "Discord",
-      icon: "icons/discord.svg",
-      href: "https://discord.gg/a8vcHhxdPB",
-    },
-    {
-      title: "Instagram",
-      icon: "icons/instagram.svg",
-      href: "https://www.instagram.com/wakan_dojo/",
-    },
-  ];
+
+  const metadata = data.metadata.childContentYaml;
 
   const menuItems = sections
     .map((node) => ({
@@ -93,7 +92,7 @@ const IndexPage = ({ data }) => {
         node.childMarkdownRemark.frontmatter.title,
       anchor: node.name,
     }))
-    .concat(staticMenuItems);
+    .concat(metadata.social_icons);
 
   let articles = data.articles.nodes.map((node) => ({
     title: node.childMarkdownRemark.frontmatter.title,
@@ -104,8 +103,8 @@ const IndexPage = ({ data }) => {
     <>
       <Header
         menuItems={menuItems}
-        title="Wakan Dōjō"
-        subtitle="Association parisienne de Ninjutsu"
+        title={metadata.title}
+        subtitle={metadata.subtitle}
         menuOpenWording="Ouvrir le menu"
       ></Header>
       <main>
@@ -117,10 +116,19 @@ const IndexPage = ({ data }) => {
             content={node.childMarkdownRemark.html}
             leftImage={node.childMarkdownRemark.frontmatter.left_image}
             bottomImage={node.childMarkdownRemark.frontmatter.bottom_image}
-            gallery={node.childMarkdownRemark.frontmatter.gallery}
-            articles={node.childMarkdownRemark.frontmatter.blog && articles}
-            map={node.childMarkdownRemark.frontmatter.map}
-          ></Section>
+          >
+            {node.childMarkdownRemark.frontmatter.gallery && (
+              <Gallery
+                gallery={node.childMarkdownRemark.frontmatter.gallery}
+              ></Gallery>
+            )}
+            {node.childMarkdownRemark.frontmatter.blog && (
+              <Blog articles={articles}></Blog>
+            )}
+            {node.childMarkdownRemark.frontmatter.map && (
+              <Map {...node.childMarkdownRemark.frontmatter.map}></Map>
+            )}
+          </Section>
         ))}
       </main>
       <Footer content={data.footer.childMarkdownRemark.html}></Footer>
@@ -130,8 +138,53 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage;
 
-export const Head = () => (
-  <>
-    <html class="scroll-smooth scroll-pt-4" />
-  </>
-);
+export const Head = ({ data }) => {
+  const metadata = data.metadata.childContentYaml;
+  const fullTitle = `${metadata.title} &emdash; ${metadata.subtitle}`;
+  return (
+    <>
+      <html lang="fr" className="scroll-smooth scroll-pt-4" />
+
+      {/* Primary Meta Tags */}
+      <title>{fullTitle}</title>
+      <meta name="title" content={metadata.title} />
+      <meta name="description" content={metadata.description} />
+      <meta name="keywords" content={metadata.keywords} />
+
+      {/* Favicon */}
+      {/* https://favicon.io/favicon-generator/ */}
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="favicon-16x16.png"
+      />
+      <link rel="manifest" href="site.webmanifest" />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content={metadata.title} />
+      <meta property="og:url" content={metadata.url} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:image" content={metadata.social_card} />
+
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={metadata.url} />
+      <meta property="twitter:title" content={fullTitle} />
+      <meta property="twitter:description" content={metadata.description} />
+      <meta property="twitter:image" content={metadata.social_card} />
+    </>
+  );
+};
