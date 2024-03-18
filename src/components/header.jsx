@@ -1,5 +1,23 @@
+import {
+  SiDiscord,
+  SiFacebook,
+  SiInstagram,
+} from "@icons-pack/react-simple-icons";
 import * as React from "react";
 import { Navbar } from "./navbar";
+
+const Icon = ({ icon, ...props }) => {
+  switch (icon) {
+    case "discord":
+      return <SiDiscord {...props} />;
+    case "instagram":
+      return <SiInstagram {...props} />;
+    case "facebook":
+      return <SiFacebook {...props} />;
+    default:
+      return null;
+  }
+};
 
 const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
   const [openMenu, setOpenMenu] = React.useState(false);
@@ -31,6 +49,7 @@ const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
           title={title}
           menuOpenWording={menuOpenWording}
           topAnchor="top"
+          contentAnchor="content"
           open={openMenu}
           setOpen={setOpenMenu}
         >
@@ -42,11 +61,11 @@ const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
               onClick={() => setOpenMenu(false)}
             >
               {(menuItem.icon && (
-                <img
+                <Icon
                   className="inline-block"
-                  src={menuItem.icon}
-                  alt={menuItem.title}
-                />
+                  icon={menuItem.icon}
+                  size={18}
+                ></Icon>
               )) ||
                 menuItem.title}
             </a>

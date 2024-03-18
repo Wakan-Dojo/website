@@ -107,7 +107,7 @@ const IndexPage = ({ data }) => {
         subtitle={metadata.subtitle}
         menuOpenWording="Ouvrir le menu"
       ></Header>
-      <main>
+      <main id="content">
         {sections.map((node) => (
           <Section
             key={node.name}

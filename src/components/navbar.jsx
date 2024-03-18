@@ -1,3 +1,4 @@
+import { ArrowDownIcon } from "@heroicons/react/20/solid";
 import cn from "classnames";
 import * as React from "react";
 
@@ -6,10 +7,23 @@ export const Navbar = ({
   title,
   menuOpenWording,
   topAnchor,
+  contentAnchor,
   open,
   setOpen,
 }) => {
   const ref = React.useRef(null);
+  const [top, setTop] = React.useState(true);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      console.log(window.scrollY > 20);
+      setTop(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div
@@ -22,8 +36,7 @@ export const Navbar = ({
           ref={ref}
           onClick={() => {
             setOpen(!open);
-            const rect = ref.current.getBoundingClientRect();
-            if (!open && rect.top > 20) {
+            if (!open && top) {
               ref.current.scrollIntoView();
             }
           }}
@@ -103,10 +116,18 @@ export const Navbar = ({
             {children}
           </div>
           <a
-            className="p-2 sm:p-5 font-semibold transition-colors duration-300 hover:text-slate-500 hidden sm:visible"
-            href="#wakan-dojo"
+            className="p-2 sm:p-5 font-semibold transition-colors duration-300 hover:text-slate-500 invisible sm:visible"
+            href={`#${top ? topAnchor : contentAnchor}`}
           >
-            <i className="ib fa-arrow-down"></i>
+            <ArrowDownIcon
+              className={cn(
+                "h-5",
+                "w-5",
+                "transition-transform",
+                "duration-300",
+                { "rotate-180": top }
+              )}
+            />
           </a>
         </div>
       </nav>
