@@ -1,22 +1,11 @@
-import {
-  SiDiscord,
-  SiFacebook,
-  SiInstagram,
-} from "@icons-pack/react-simple-icons";
+import * as Icons from "@icons-pack/react-simple-icons";
 import * as React from "react";
 import { Navbar } from "./navbar";
 
 const Icon = ({ icon, ...props }) => {
-  switch (icon) {
-    case "discord":
-      return <SiDiscord {...props} />;
-    case "instagram":
-      return <SiInstagram {...props} />;
-    case "facebook":
-      return <SiFacebook {...props} />;
-    default:
-      return null;
-  }
+  const Component = Icons[`Si${icon}`];
+
+  return <Component {...props} />;
 };
 
 const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
@@ -65,6 +54,7 @@ const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
                   className="inline-block"
                   icon={menuItem.icon}
                   size={18}
+                  title={menuItem.title}
                 ></Icon>
               )) ||
                 menuItem.title}

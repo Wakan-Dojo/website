@@ -1,7 +1,13 @@
+# backend:
+#   name: github
+#   repo: "Wakan-Dojo/website"
+#   branch: main
+
+local_backend: true
 backend:
-  name: github
-  repo: "Wakan-Dojo/website"
-  branch: main
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
+  branch: gatsby
 
 media_folder: "static"
 
@@ -34,23 +40,23 @@ collections:
 
           - label: "URL"
             name: "url"
-            hint:
+            hint: "URL de déploiement du site"
             widget: "string"
             pattern: ["https://.*", "Ce champ doit être une URL"]
 
-          - {
-              label: "Social Icons",
-              name: "social_icons",
-              widget: "list",
-              fields:
-                [
-                  { label: "Title", name: "title", widget: "string" },
-                  { label: "Icon", name: "icon", widget: "string" },
-                  {
-                    label: "Href",
-                    name: "href",
-                    widget: "string",
-                    pattern: ["https://.*", "Ce champ doit être une URL"],
-                  },
-                ],
-            }
+          - label: "Social Icons"
+            name: "social_icons"
+            widget: "list"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Icon"
+                name: "icon"
+                widget: "string"
+                hint: "Nom de l'icône, tiré de https://simpleicons.org/"
+
+              - label: "Href"
+                name: "href"
+                widget: "string"
+                pattern: ["https://.*", "Ce champ doit être une URL"]

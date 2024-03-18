@@ -140,7 +140,7 @@ export default IndexPage;
 
 export const Head = ({ data }) => {
   const metadata = data.metadata.childContentYaml;
-  const fullTitle = `${metadata.title} &emdash; ${metadata.subtitle}`;
+  const fullTitle = `${metadata.title} — ${metadata.subtitle}`;
   return (
     <>
       <html lang="fr" className="scroll-smooth scroll-pt-4" />
