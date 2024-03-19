@@ -2,6 +2,7 @@ import { graphql } from "gatsby";
 import * as React from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import { CloudinaryConfigContext } from "../components/image";
 import { Blog, Gallery, Map, Section } from "../components/section";
 
 export const query = graphql`
@@ -77,6 +78,13 @@ export const query = graphql`
         }
       }
     }
+    site {
+      siteMetadata {
+        cloudinaryConfig {
+          cloudName
+        }
+      }
+    }
   }
 `;
 
@@ -94,13 +102,16 @@ const IndexPage = ({ data }) => {
     }))
     .concat(metadata.social_icons);
 
-  let articles = data.articles.nodes.map((node) => ({
+  const articles = data.articles.nodes.map((node) => ({
     title: node.childMarkdownRemark.frontmatter.title,
     content: node.childMarkdownRemark.html,
     image: node.childMarkdownRemark.frontmatter.image,
   }));
+  const gatsbyMetadata = data.site.siteMetadata;
+  const cloudinaryConfig = gatsbyMetadata.cloudinaryConfig;
+
   return (
-    <>
+    <CloudinaryConfigContext.Provider value={cloudinaryConfig}>
       <Header
         menuItems={menuItems}
         title={metadata.title}
@@ -132,7 +143,7 @@ const IndexPage = ({ data }) => {
         ))}
       </main>
       <Footer content={data.footer.childMarkdownRemark.html}></Footer>
-    </>
+    </CloudinaryConfigContext.Provider>
   );
 };
 

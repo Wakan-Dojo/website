@@ -1,5 +1,6 @@
 import * as React from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { CloudinaryConfigContext, Image, getUrl } from "./image";
 import Markdown from "./markdown";
 
 const Article = ({ article }) => {
@@ -56,7 +57,11 @@ const SectionContent = ({ title, content, anchor, leftImage }) => {
   if (leftImage) {
     return (
       <div className="flex items-center flex-col md:flex-row">
-        <img src={leftImage} alt="" className="h-full w-1/2 m-4 aspect-auto" />
+        <Image
+          name={leftImage}
+          alt=""
+          className="h-full w-1/2 m-4 aspect-auto"
+        />
         <div className="m-4">
           <SectionContent
             title={title}
@@ -82,9 +87,9 @@ export const Gallery = ({ gallery }) => {
   return (
     <div className="flex items-center flex-wrap justify-evenly">
       {gallery.map((item) => (
-        <img
+        <Image
           key={item.url}
-          src={item.url}
+          name={item.url}
           alt={item.title}
           className="w-full md:w-5/12 m-4 rounded-lg"
         />
@@ -101,6 +106,7 @@ export const Section = ({
   bottomImage,
   children,
 }) => {
+  const cloudinaryConfig = React.useContext(CloudinaryConfigContext);
   return (
     <>
       <section className="container mx-auto max-w-5xl p-12" id={anchor}>
@@ -115,7 +121,13 @@ export const Section = ({
       {bottomImage && (
         <section
           className="h-[50vh] bg-cover bg-fixed bg-center"
-          style={{ backgroundImage: `url(${bottomImage})` }}
+          style={{
+            backgroundImage: `url(${getUrl({
+              name: bottomImage,
+              alt: "",
+              cloudinaryConfig,
+            })})`,
+          }}
         ></section>
       )}
     </>

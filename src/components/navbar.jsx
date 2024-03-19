@@ -15,7 +15,6 @@ export const Navbar = ({
   const [top, setTop] = React.useState(true);
   React.useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY > 20);
       setTop(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);

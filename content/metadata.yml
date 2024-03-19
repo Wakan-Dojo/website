@@ -2,15 +2,15 @@ title: Wakan Dōjō
 subtitle: Association parisienne de Ninjutsu
 description: todo
 keywords: todo
-social_card: todo
-url: "https://wakan-dojo.fr"
+social_card: https://res.cloudinary.com/do5ihi4vp/image/upload/v1710850597/wakan-dojo/photo-3_rowh0t.jpg
+url: https://wakan-dojo.fr
 social_icons:
-  - title: "Facebook"
-    icon: "Facebook"
-    href: "https://www.facebook.com/profile.php?id=100092522586970"
-  - title: "Discord"
-    icon: "Discord"
-    href: "https://discord.gg/a8vcHhxdPB"
-  - title: "Instagram"
-    icon: "Instagram"
-    href: "https://www.instagram.com/wakan_dojo/"
+  - title: Facebook
+    icon: Facebook
+    href: https://www.facebook.com/profile.php?id=100092522586970
+  - title: Discord
+    icon: Discord
+    href: https://discord.gg/a8vcHhxdPB
+  - title: Instagram
+    icon: Instagram
+    href: https://www.instagram.com/wakan_dojo/

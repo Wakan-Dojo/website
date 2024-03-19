@@ -11,7 +11,7 @@ map:
     - 25 Bd de Strasbourg,
     - 75010 Paris
   token: pk.eyJ1IjoiZXdqb2FjaGltIiwiYSI6ImNsMW8wbG8xdzAxMnAzZG5xbjZzZnNxMmUifQ.2om45d2fPNIwlDI3Hy7ZvQ
-bottom_image: paul-et-hatsumi-sensei.jpg
+bottom_image: wakan-dojo/paul-et-hatsumi-sensei_piqgwq.jpg
 ---
 
 - Où : _Tenchi Dojo, 25 Bd de Strasbourg, 75010 Paris_

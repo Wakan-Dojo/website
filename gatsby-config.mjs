@@ -1,5 +1,12 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
 const config = {
-  siteMetadata: {},
+  siteMetadata: {
+    cloudinaryConfig: {
+      cloudName: "do5ihi4vp",
+    },
+  },
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-transformer-remark",
@@ -21,7 +28,14 @@ const config = {
       },
       __key: "content",
     },
-    "gatsby-plugin-decap-cms",
+    {
+      resolve: "gatsby-plugin-decap-cms",
+      options: {
+        modulePath: `${path.dirname(
+          fileURLToPath(import.meta.url)
+        )}/src/cms/cms.js`,
+      },
+    },
   ],
 };
 

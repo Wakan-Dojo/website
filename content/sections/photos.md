@@ -3,15 +3,15 @@ title: Photos
 order: 70
 gallery:
   - title: ""
-    url: photo-1.jpg
+    url: wakan-dojo/photo-1_vyg4ih
   - title: ""
-    url: photo-2.jpg
+    url: wakan-dojo/photo-2_bdyakw
   - title: ""
-    url: photo-3.jpg
+    url: wakan-dojo/photo-3_rowh0t
   - title: ""
-    url: photo-4.jpg
+    url: wakan-dojo/photo-4_m7jdeo
   - title: ""
-    url: photo-5.jpg
+    url: wakan-dojo/photo-5_gihlbm
   - title: ""
-    url: photo-6.jpg
+    url: wakan-dojo/photo-6_a9x74m
 ---

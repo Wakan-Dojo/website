@@ -9,7 +9,14 @@ backend:
   proxy_url: http://localhost:8081/api/v1
   branch: gatsby
 
-media_folder: "static"
+media_folder: static
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: do5ihi4vp
+    api_key: 756368395847219
+    output_filename_only: true
 
 collections:
   - name: "metadata"

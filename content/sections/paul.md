@@ -1,8 +1,8 @@
 ---
 title: Paul Teisson
 order: 30
-left_image: paul-2.jpg
-bottom_image: montagne-blanche.jpg
+left_image: wakan-dojo/paul-2_b064jj.jpg
+bottom_image: wakan-dojo/montagne-blanche_u6ozyy.jpg
 ---
 
 Paul Teisson encadre les cours du Wakan Dojo. Pratiquant régulier en France depuis 2003, il s'entraîne
