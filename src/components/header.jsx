@@ -1,5 +1,6 @@
 import * as Icons from "@icons-pack/react-simple-icons";
 import * as React from "react";
+import { Image } from "./image";
 import { Navbar } from "./navbar";
 
 const Icon = ({ icon, ...props }) => {
@@ -8,7 +9,7 @@ const Icon = ({ icon, ...props }) => {
   return <Component {...props} />;
 };
 
-const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
+const Header = ({ menuItems, title, subtitle, logo, menuOpenWording }) => {
   const [openMenu, setOpenMenu] = React.useState(false);
   return (
     <>
@@ -17,9 +18,9 @@ const Header = ({ menuItems, title, subtitle, menuOpenWording }) => {
         className="flex h-[calc(100vh-4em)] flex-col justify-end bg-[url('/armure.jpg')] bg-fixed bg-cover bg-center"
       >
         <div className="justify-left jus container mx-auto flex max-w-5xl items-center pb-12 pl-12 md:pb-24">
-          <img
+          <Image
             className="inline-block h-20 w-20 flex-none rounded-full drop-shadow-lg"
-            src="logo.jpg"
+            name={logo}
             alt=""
           />
           <div className="ml-8 flex flex-col">

@@ -7,7 +7,7 @@ export const createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String!
       order: Int!
-      menu_title: String
+      menuTitle: String
       left_image: String
       bottom_image: String
       map: Map
@@ -16,7 +16,7 @@ export const createSchemaCustomization = ({ actions }) => {
     }
     type Map {
       geojson: String!
-      initZoom: Int!
+      init_zoom: Int!
       popupContent: [String!]
       token: String!
     }

@@ -21,7 +21,7 @@ export const query = graphql`
           frontmatter {
             title
             order
-            menu_title
+            menuTitle
             left_image
             bottom_image
             blog
@@ -31,8 +31,8 @@ export const query = graphql`
             }
             map {
               geojson
-              initZoom
-              popupContent
+              init_zoom
+              popup_content
               token
             }
           }
@@ -71,6 +71,7 @@ export const query = graphql`
         description
         keywords
         social_card
+        logo
         social_icons {
           title
           icon
@@ -92,11 +93,12 @@ const IndexPage = ({ data }) => {
   const sections = data.sections.nodes;
 
   const metadata = data.metadata.childContentYaml;
+  console.log(metadata);
 
   const menuItems = sections
     .map((node) => ({
       title:
-        node.childMarkdownRemark.frontmatter.menu_title ||
+        node.childMarkdownRemark.frontmatter.menuTitle ||
         node.childMarkdownRemark.frontmatter.title,
       anchor: node.name,
     }))
@@ -116,6 +118,7 @@ const IndexPage = ({ data }) => {
         menuItems={menuItems}
         title={metadata.title}
         subtitle={metadata.subtitle}
+        logo={metadata.logo}
         menuOpenWording="Ouvrir le menu"
       ></Header>
       <main id="content">

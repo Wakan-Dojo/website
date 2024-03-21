@@ -1,12 +1,12 @@
 ---
 title: Informations pratiques
 order: 20
-menu_title: Infos & Contact
+menuTitle: Infos & Contact
 map:
   geojson: >
     {"type": "Point", "coordinates": [2.3549599, 48.8709636]}
-  initZoom: 15
-  popupContent:
+  init_zoom: 15
+  popup_content:
     - Tenchi Dojo
     - 25 Bd de Strasbourg,
     - 75010 Paris

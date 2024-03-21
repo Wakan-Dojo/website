@@ -16,7 +16,6 @@ media_library:
   config:
     cloud_name: do5ihi4vp
     api_key: 756368395847219
-    output_filename_only: true
 
 collections:
   - name: "metadata"
@@ -40,6 +39,11 @@ collections:
             name: "keywords"
             widget: "string"
             hint: "Mots-clés utilisés pour le référencement SEO, séparés par des virgules"
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            hint: "Affiché dans le header, à côté du titre du site"
+
           - label: "Social card"
             name: "social_card"
             widget: "image"
@@ -67,3 +71,75 @@ collections:
                 name: "href"
                 widget: "string"
                 pattern: ["https://.*", "Ce champ doit être une URL"]
+
+  - name: "sections"
+    label: "Sections"
+    folder: "content/sections"
+    create: true
+    slug: "{{title}}"
+    extension: "yml"
+    format: "yaml-frontmatter"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Order"
+        name: "order"
+        widget: "number"
+      - label: "Image à gauche du texte"
+        name: "left_image"
+        widget: "image"
+        required: false
+        hint: "optionnel"
+      - label: "Image sous la section"
+        name: "bottom_image"
+        widget: "image"
+        required: false
+        hint: "optionnel, recommandé pour toutes les sections sauf la dernière"
+      - label: "Titre dans le menu de navigation"
+        name: "menuTitle"
+        widget: "string"
+        required: false
+        hint: "optionnel, si différent du titre"
+      - label: "Contenu"
+        name: "body"
+        widget: "markdown"
+      - label: "Carte"
+        name: "map"
+        widget: "object"
+        fields:
+          - label: "GeoJSON"
+            name: "geojson"
+            widget: "string"
+          - label: "Initial zoom"
+            name: "initZoom"
+            widget: "number"
+          - label: "Popup content"
+            name: "popupContent"
+            widget: "list"
+            fields:
+              - label: "Content"
+                name: "content"
+                widget: "string"
+          - label: "Mapbox token"
+            name: "token"
+            widget: "string"
+
+      # title: String!
+      # order: Int!
+      # menuTitle: String
+      # left_image: String
+      # bottom_image: String
+      # map: Map
+      # gallery: [GalleryItem!]
+      # blog: Boolean
+    # type Map {
+    #   geojson: String!
+    #   initZoom: Int!
+    #   popupContent: [String!]
+    #   token: String!
+    # }
+    # type GalleryItem {
+    #   title: String
+    #   url: String!
+    # }

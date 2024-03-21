@@ -1,7 +1,7 @@
 ---
 title: La Pédagogie
 order: 60
-menu_title: Pédagogie
+menuTitle: Pédagogie
 left_image: wakan-dojo/pedagogie_zc0pro.png
 bottom_image: wakan-dojo/armure_pnvwnn.jpg
 ---

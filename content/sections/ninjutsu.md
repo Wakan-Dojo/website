@@ -1,7 +1,7 @@
 ---
 title: Le Ninjutsu
 order: 50
-menu_title: Ninjutsu
+menuTitle: Ninjutsu
 left_image: wakan-dojo/ninjutsu_o5xviy.png
 bottom_image: wakan-dojo/paul-prend-cher_lf0caq.jpg
 ---
