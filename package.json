@@ -39,5 +39,6 @@
     "react-dom": "*",
     "react-leaflet": "^4.2.1",
     "tailwindcss": "*"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
