@@ -5,7 +5,7 @@ summary of the stack from front to back:
 - fontsource, heroicons, simple-icons
 - Leaflet
 - Tailwind CSS & PostCSS
-- Gatsby & React
+- Gatsby & React, Gatsby handles image processing
 - DecapCMS editing yaml files & markdown files
 - Deployed with Cloudflare Pages
 
