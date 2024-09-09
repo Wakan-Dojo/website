@@ -1,7 +1,11 @@
 Different files have a different licence:
-# `content` and `static` folders (except `static/admin`):
+# `content` and `static` folders (except `static/admin` & photographs):
 
 Copyright (c) 2024 Joachim Jablon, Paul Teisson, All rights reserved
+
+# Photographs
+
+Copyright (c) 2024 Paul Teisson, All rights reserved
 
 # All other files (`src`, files at the root of the repository and `static/admin`):
 
